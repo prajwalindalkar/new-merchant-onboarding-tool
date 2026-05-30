@@ -1,0 +1,17 @@
+{
+  "name": "phonepE-merchant-onboarding",
+  "version": "1.0.0",
+  "description": "PhonePe Merchant Onboarding Document Generator",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "docx": "^9.6.1",
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
