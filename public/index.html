@@ -17,7 +17,6 @@ header p{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
 .dot{width:8px;height:8px;border-radius:50%;background:#4ade80}
 .wrap{max-width:880px;margin:0 auto;padding:22px 16px 80px}
 
-/* tabs */
 .tabs{display:flex;background:var(--card);border:1px solid var(--bdr);border-radius:12px;overflow:hidden;margin-bottom:20px;box-shadow:0 2px 10px rgba(95,37,159,.07)}
 .tab{flex:1;padding:10px 4px;text-align:center;cursor:pointer;font-size:11px;font-weight:600;color:var(--muted);border-bottom:3px solid transparent;transition:all .18s;user-select:none}
 .tab:hover:not(.disabled){background:var(--pale)}
@@ -26,19 +25,16 @@ header p{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
 .tab.disabled{opacity:.35;cursor:not-allowed;pointer-events:none}
 .tab-n{font-size:16px;display:block;margin-bottom:1px}
 
-/* cards */
 .card{background:var(--card);border:1px solid var(--bdr);border-radius:14px;margin-bottom:16px;overflow:hidden;box-shadow:0 2px 12px rgba(95,37,159,.06)}
 .chd{background:linear-gradient(90deg,var(--pe),var(--pe2));padding:11px 16px;display:flex;align-items:center;gap:10px}
 .chd h2{color:#fff;font-size:13px;font-weight:700}
 .badge{background:rgba(255,255,255,.22);color:#fff;font-size:11px;font-weight:600;padding:2px 9px;border-radius:20px;margin-left:auto}
 .cbd{padding:16px}
 
-/* grid */
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
 .s2{grid-column:span 2}
 
-/* fields */
 .f{display:flex;flex-direction:column;gap:4px}
 .f label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
 .f label .r{color:var(--red)}
@@ -48,6 +44,14 @@ header p{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
 .f textarea{resize:vertical;min-height:60px}
 .f .hint{font-size:11px;color:var(--muted);font-style:italic}
 
+/* Aadhaar prefix input wrapper */
+.aadhar-wrap{display:flex;align-items:center;border:1.5px solid var(--bdr);border-radius:8px;background:#fff;overflow:hidden;transition:border-color .18s,box-shadow .18s}
+.aadhar-wrap:focus-within{border-color:var(--pe);box-shadow:0 0 0 3px rgba(95,37,159,.11)}
+.aadhar-wrap.err{border-color:var(--red);box-shadow:0 0 0 3px rgba(192,57,43,.09)}
+.aadhar-prefix{padding:8px 0 8px 11px;font-size:14px;color:var(--muted);white-space:nowrap;user-select:none;background:#f7f4ff;border-right:1px solid var(--bdr)}
+.aadhar-input{border:none!important;border-radius:0!important;box-shadow:none!important;flex:1;min-width:0;padding:8px 11px!important}
+.aadhar-input:focus{box-shadow:none!important}
+
 .rg{display:flex;gap:14px;flex-wrap:wrap;padding:3px 0}
 .rg label,.cg label{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--txt);cursor:pointer;text-transform:none;letter-spacing:0}
 .rg input,.cg input{width:15px;height:15px;accent-color:var(--pe);cursor:pointer;border:none;padding:0;box-shadow:none}
@@ -55,8 +59,11 @@ header p{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
 .divider{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;padding:12px 0 7px;border-bottom:1px solid var(--bdr);margin-bottom:12px}
 .info{background:#fff8e1;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:8px 12px;font-size:12px;color:#6a4e00;margin-bottom:12px}
 .info strong{color:#4a3600}
+.info-blue{background:#e8f0fe;border-left:4px solid #4285f4;border-radius:0 8px 8px 0;padding:8px 12px;font-size:12px;color:#1a3a7a;margin-bottom:12px}
 
-/* ── DOC SELECTION — simple checkboxes ── */
+/* Section sub-headers inside partner rows */
+.p-section{font-size:10.5px;font-weight:700;color:var(--pe);text-transform:uppercase;letter-spacing:.8px;padding:10px 0 6px;border-bottom:1px dashed var(--bdr);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+
 .doc-sel{display:flex;flex-direction:column;gap:12px;margin-bottom:4px}
 .doc-row{display:flex;align-items:center;gap:16px;background:#fff;border:2px solid var(--bdr);border-radius:12px;padding:16px 18px;transition:border-color .2s,background .2s}
 .doc-row.on{border-color:var(--pe);background:var(--pale);box-shadow:0 0 0 3px rgba(95,37,159,.10)}
@@ -65,7 +72,6 @@ header p{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
 .dc-title{font-size:15px;font-weight:700;color:var(--txt)}
 .dc-sub{font-size:12px;color:var(--muted);margin-top:2px}
 
-/* partner rows */
 .prow{border:1.5px solid var(--bdr);border-radius:10px;padding:13px;margin-bottom:10px;background:#faf8ff}
 .prow-hd{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
 .plbl{font-size:12px;font-weight:700;color:var(--pe);background:var(--pale);padding:3px 10px;border-radius:20px}
@@ -76,11 +82,9 @@ header p{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
 .add-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--pale);border:2px dashed var(--pe);border-radius:10px;padding:10px;color:var(--pe);font-weight:600;font-size:13px;cursor:pointer;width:100%;margin-top:4px}
 .add-btn:hover{background:#ece3ff}
 
-/* pages */
 .page{display:none}
 .page.active{display:block}
 
-/* actions */
 .act{display:flex;justify-content:space-between;align-items:center;padding:12px 0;gap:10px}
 .btn{padding:10px 22px;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;border:none;transition:all .18s;display:inline-flex;align-items:center;gap:8px}
 .btn-p{background:linear-gradient(135deg,var(--pe),var(--pe2));color:#fff;box-shadow:0 4px 14px rgba(95,37,159,.3)}
@@ -93,24 +97,20 @@ header p{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
 .btn-red:hover{background:#fdecea}
 .btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
 
-/* generate */
 .gen-box{background:linear-gradient(135deg,#f0eaff,#eef7f1);border:2px solid var(--pe);border-radius:14px;padding:22px;text-align:center}
 .gen-box h3{font-size:17px;color:var(--pe);margin-bottom:6px}
 .gen-box p{font-size:13px;color:var(--muted);margin-bottom:18px}
 .doc-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
-/* val */
 .val{background:#fdecea;border:1.5px solid #e74c3c;border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:13px;color:var(--red);display:none}
 .val ul{padding-left:18px;margin-top:5px}
 .val li{margin-bottom:3px}
 
-/* review */
 .rtbl{width:100%;border-collapse:collapse;font-size:13px}
 .rtbl td{padding:7px 10px;border-bottom:1px solid var(--bdr)}
 .rtbl td:first-child{font-weight:600;color:var(--muted);width:45%}
 .rtbl tr:last-child td{border-bottom:none}
 
-/* toast */
 #toast{position:fixed;bottom:22px;right:22px;background:var(--txt);color:#fff;padding:11px 17px;border-radius:10px;font-size:13px;font-weight:500;opacity:0;transform:translateY(12px);transition:all .3s;pointer-events:none;max-width:300px;z-index:9999}
 #toast.show{opacity:1;transform:translateY(0)}
 #toast.ok{background:var(--green)}
@@ -141,13 +141,41 @@ header p{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
     <div class="tab" onclick="goTo(5)" id="tab5"><span class="tab-n">⑥</span>Generate</div>
   </div>
 
-  <!-- PAGE 0 — DOCUMENT SELECTION -->
+  <!-- PAGE 0 — SETUP -->
   <div class="page active" id="page0">
     <div class="val" id="v0"></div>
+
+    <!-- Agent Info -->
     <div class="card">
-      <div class="chd"><h2>📂 Which documents do you need to generate?</h2><span class="badge">Step 1 of 6</span></div>
+      <div class="chd"><h2>👤 Your Details (saved permanently)</h2><span class="badge">Filled once</span></div>
       <div class="cbd">
-        <div class="info"><strong>Tick one or both.</strong> Steps and download buttons will appear only for what you select.</div>
+        <div class="info-blue">These details are saved in your browser permanently and used for usage tracking. You only need to fill these once.</div>
+        <div class="g2">
+          <div class="f">
+            <label>Your Name (Agent) <span class="r">*</span></label>
+            <input type="text" id="agentName" placeholder="e.g. Prajwal Indalkar" oninput="saveAgent()"/>
+          </div>
+          <div class="f">
+            <label>Your Phone Number <span class="r">*</span></label>
+            <input type="tel" id="agentPhone" placeholder="e.g. 9876543210" oninput="saveAgent()"/>
+          </div>
+          <div class="f">
+            <label>CM Name <span class="r">*</span></label>
+            <input type="text" id="cmName" placeholder="Your cluster manager's name" oninput="saveAgent()"/>
+          </div>
+          <div class="f">
+            <label>State <span class="r">*</span></label>
+            <input type="text" id="agentState" placeholder="e.g. Karnataka" oninput="saveAgent()"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Document Selection -->
+    <div class="card">
+      <div class="chd"><h2>📂 Which documents do you need?</h2><span class="badge">Step 1 of 6</span></div>
+      <div class="cbd">
+        <div class="info"><strong>Tick one or both.</strong> Steps and download buttons appear only for what you select.</div>
         <div class="doc-sel">
           <div class="doc-row on" id="dr-res">
             <input type="checkbox" id="needResolution" checked onchange="onDocChange()">
@@ -168,8 +196,9 @@ header p{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
         </div>
       </div>
     </div>
+
     <div class="act">
-      <button class="btn btn-red" onclick="confirmClear()">🗑 Clear All Data</button>
+      <button class="btn btn-red" onclick="confirmClear()">🗑 Clear Merchant Data</button>
       <button class="btn btn-p" onclick="nextP(0)">Next: Firm &amp; Letterhead →</button>
     </div>
   </div>
@@ -208,12 +237,13 @@ header p{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
             <input type="text" id="principalAddr" placeholder="Different principal address" style="display:none" oninput="autoSave()"/>
           </div>
         </div>
+
         <div class="divider">Firm Declarations (used in both documents)</div>
         <div class="g2">
           <div class="f">
             <label>Partnership Deed Date <span class="r">*</span></label>
             <input type="date" id="deedDate" onchange="autoSave()"/>
-            <span class="hint">Date on the partnership deed document</span>
+            <span class="hint">📄 Date printed on the Partnership Deed document — NOT today's date</span>
           </div>
           <div class="f">
             <label>Natural Persons with Ownership Above Threshold? <span class="r">*</span></label>
@@ -232,11 +262,12 @@ header p{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
         </div>
       </div>
     </div>
+
     <div class="card">
       <div class="chd"><h2>🖨️ Letterhead Details</h2><span class="badge">Optional</span></div>
       <div class="cbd">
         <div class="info">
-          <strong>Letterhead will be embedded as a header in the Word document</strong> — firm name left, contact details right, with a ruled line underneath. Leave blank to skip (use pre-printed letterhead instead). Firm name on letterhead must match Business PAN Card.
+          <strong>Letterhead will be embedded as a header in the Word document</strong> — firm name left, contact details right. Leave blank to skip (print on pre-printed letterhead instead). Firm name must match Business PAN Card.
         </div>
         <div class="g2">
           <div class="f">
@@ -276,11 +307,12 @@ header p{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
   <div class="page" id="page2">
     <div class="val" id="v2"></div>
     <div class="card">
-      <div class="chd"><h2>👥 Partners — Details &amp; Beneficial Ownership</h2><span class="badge">Step 3 of 6</span></div>
+      <div class="chd"><h2>👥 Partners — Beneficial Ownership Details</h2><span class="badge">Step 3 of 6</span></div>
       <div class="cbd">
         <div class="info">
           <strong>BO Rule:</strong> Registered → partners with &gt;10% share. Unregistered → &gt;15%. Total must = 100%.<br>
-          <strong>Tick "Authorised Signatory"</strong> next to the partner authorised to operate the PhonePe account.
+          <strong>Tick "Authorised Signatory"</strong> next to the partner who will sign on behalf of the firm.<br>
+          Fill <strong>PAN card details first</strong>, then Aadhaar/address details, then % share from the Partnership Deed.
         </div>
         <div id="pContainer"></div>
         <button class="add-btn" onclick="addPartner()">＋ Add Another Partner</button>
@@ -302,14 +334,16 @@ header p{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
           <div class="f">
             <label>Date of Resolution Meeting <span class="r">*</span></label>
             <input type="date" id="resDate" onchange="syncBODate();autoSave()"/>
+            <span class="hint">📅 Today's date — the date this meeting is taking place</span>
           </div>
           <div class="f">
             <label>Time of Resolution Meeting <span class="r">*</span></label>
             <input type="time" id="resTime" onchange="autoSave()"/>
+            <span class="hint">📅 Current time of the meeting</span>
           </div>
         </div>
         <div class="divider">Partners Present During Resolution</div>
-        <div class="info"><strong>Rule:</strong> Must have &gt;50% combined share. Minimum 2 partners. Authorised Signatory already set in previous step.</div>
+        <div class="info"><strong>Rule:</strong> Must have &gt;50% combined share. Minimum 2 partners. Authorised Signatory set in previous step.</div>
         <div id="ppContainer"><p style="font-size:13px;color:var(--muted);font-style:italic">Complete Step 3 first.</p></div>
       </div>
     </div>
@@ -329,7 +363,7 @@ header p{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
           <div class="f">
             <label>BO Declaration Date <span class="r">*</span></label>
             <input type="date" id="boDate" onchange="autoSave()"/>
-            <span class="hint">Auto-filled from Resolution date. Must match.</span>
+            <span class="hint">📅 Today's date — auto-filled from resolution date. Must match.</span>
           </div>
         </div>
         <div class="divider">BO Category</div>
@@ -356,10 +390,10 @@ header p{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
     </div>
     <div class="gen-box">
       <h3>🎉 Ready to Generate</h3>
-      <p>Click the button below. The file will download as a Word (.docx) document.<br>Print on firm letterhead · Sign &amp; seal after printing.</p>
+      <p>Click the button below. File downloads as Word (.docx).<br>Print on firm letterhead · Sign &amp; seal after printing.</p>
       <div class="doc-btns" id="docBtns"></div>
       <p style="margin-top:12px;font-size:11px;color:var(--muted)">
-        All <u>underlined text</u> in the document = your filled-in data. Static template text is not underlined.
+        All <u><strong>bold underlined text</strong></u> in the document = your filled-in data.
       </p>
     </div>
     <div class="act">
@@ -372,37 +406,82 @@ header p{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
 
 <script>
 // ══ STATE ══════════════════════════════
-const LS = 'pe_merchant_v4';
+const LS       = 'pe_merchant_v5';       // merchant data (clears per onboarding)
+const LS_AGENT = 'pe_agent_permanent';   // agent info (never clears)
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxfI5PR7BIxfb17WnYtzR6-S8PASQ8glGZ-D0Eaj0LvXjkbiYgEQ7lMJZEA4TU0t-P3/exec'; // ← paste your Apps Script URL here after setup
+
 let cur = 0, partnerIds = [], pCount = 0;
 
 // ══ INIT ═══════════════════════════════
 window.addEventListener('DOMContentLoaded', () => {
+  loadAgentStorage();   // always load agent info first
   loadStorage();
   if (partnerIds.length === 0) { addPartner(); addPartner(); }
   updateTabState();
 });
 
+// ══ AGENT INFO — permanent storage ═════
+function saveAgent() {
+  try {
+    localStorage.setItem(LS_AGENT, JSON.stringify({
+      agentName:  gv('agentName'),
+      agentPhone: gv('agentPhone'),
+      cmName:     gv('cmName'),
+      agentState: gv('agentState'),
+    }));
+  } catch(e) {}
+}
+function loadAgentStorage() {
+  try {
+    const raw = localStorage.getItem(LS_AGENT);
+    if (!raw) return;
+    const d = JSON.parse(raw);
+    sv('agentName',  d.agentName);
+    sv('agentPhone', d.agentPhone);
+    sv('cmName',     d.cmName);
+    sv('agentState', d.agentState);
+  } catch(e) {}
+}
+
+// ══ GOOGLE SHEETS LOGGING ══════════════
+async function logToSheets(docType) {
+  if (!SHEETS_URL) return; // silently skip if URL not configured
+  try {
+    const now = new Date();
+    const payload = {
+      firmName:   gv('firmName'),
+      docType:    docType === 'resolution' ? 'Partner Resolution' : 'BO Declaration',
+      timestamp:  now.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+      agentName:  gv('agentName'),
+      agentPhone: gv('agentPhone'),
+      cmName:     gv('cmName'),
+      state:      gv('agentState'),
+    };
+    // Fire and forget — don't await, don't block download
+    fetch(SHEETS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+  } catch(e) { /* silent fail */ }
+}
+
 // ══ DOC SELECTION ══════════════════════
 function onDocChange() {
-  // Update row highlight
   document.getElementById('dr-res').classList.toggle('on', needRes());
   document.getElementById('dr-bo').classList.toggle('on', needBO());
   updateTabState();
   autoSave();
 }
-
 function updateTabState() {
-  // Tab 3 = Resolution, Tab 4 = BO
-  const t3 = document.getElementById('tab3');
-  const t4 = document.getElementById('tab4');
-  t3.classList.toggle('disabled', !needRes());
-  t4.classList.toggle('disabled', !needBO());
+  document.getElementById('tab3').classList.toggle('disabled', !needRes());
+  document.getElementById('tab4').classList.toggle('disabled', !needBO());
 }
-
 function needRes() { return document.getElementById('needResolution').checked; }
 function needBO()  { return document.getElementById('needBO').checked; }
 
-// ══ STORAGE ════════════════════════════
+// ══ MERCHANT DATA STORAGE ══════════════
 function autoSave() {
   try { localStorage.setItem(LS, JSON.stringify(collectAll())); flashSave(); } catch(e) {}
 }
@@ -468,7 +547,10 @@ function setRadio(name, val) {
   if (rb) rb.checked = true;
 }
 function confirmClear() {
-  if (confirm('Clear ALL saved data? This cannot be undone.')) { localStorage.removeItem(LS); location.reload(); }
+  if (confirm('Clear all MERCHANT data for this onboarding? Your agent details will be kept.')) {
+    localStorage.removeItem(LS);
+    location.reload();
+  }
 }
 
 // ══ NAVIGATION ═════════════════════════
@@ -485,9 +567,7 @@ function goTo(n) {
 function nextP(from) {
   if (!validate(from)) return;
   document.getElementById('tab'+from).classList.add('done');
-  // Skip resolution step if not needed
   if (from === 2 && !needRes()) { goTo(needBO() ? 4 : 5); return; }
-  // Skip BO step if not needed
   if (from === 3 && !needBO()) { goTo(5); return; }
   goTo(from + 1);
 }
@@ -502,6 +582,43 @@ function sv(id, val) { const e = document.getElementById(id); if (e && val != nu
 function togglePA(el) { document.getElementById('principalAddr').style.display = el.value === 'diff' ? 'block' : 'none'; }
 function syncBODate() { sv('boDate', gv('resDate')); autoSave(); }
 
+// ══ AADHAAR INPUT HANDLER ══════════════
+function onPoaChange(id) {
+  const poa = gv('ppoa_'+id);
+  const wrap = document.getElementById('poaWrap_'+id);
+  const inp  = document.getElementById('ppoaN_'+id);
+  const pre  = document.getElementById('poaPre_'+id);
+  autoSave();
+
+  if (poa === 'AADHAR') {
+    wrap.style.display = 'flex';
+    inp.placeholder = 'last 4 digits';
+    inp.maxLength   = 4;
+    inp.inputMode   = 'numeric';
+    inp.pattern     = '[0-9]{4}';
+    pre.style.display = '';
+    // Clear any previously stored full number
+    const cur = inp.value.replace(/^XXXX XXXX /, '');
+    inp.value = cur.length <= 4 ? cur : '';
+  } else {
+    wrap.style.display = 'flex';
+    inp.placeholder = 'Reference number';
+    inp.maxLength   = 30;
+    inp.inputMode   = '';
+    inp.pattern     = '';
+    pre.style.display = 'none';
+    // Remove prefix if switching away
+    inp.value = inp.value.replace(/^XXXX XXXX /, '');
+  }
+}
+
+function getPoaNum(id) {
+  const poa = gv('ppoa_'+id);
+  const raw = gv('ppoaN_'+id);
+  if (poa === 'AADHAR') return 'XXXX XXXX ' + raw;
+  return raw;
+}
+
 // ══ PARTNERS ═══════════════════════════
 function addPartner() {
   pCount++; const id = pCount;
@@ -514,15 +631,26 @@ function restorePartner(p) {
   if (!partnerIds.includes(id)) partnerIds.push(id);
   renderPartnerRow(id);
   setTimeout(() => {
-    sv('pn_'+id, p.name); sv('pd_'+id, p.designation);
-    sv('pdob_'+id, p.dobRaw); sv('psh_'+id, p.share);
-    sv('pa_'+id, p.address); sv('ppan_'+id, p.pan);
-    sv('ppoa_'+id, p.poa); sv('ppoaN_'+id, p.poaNum);
+    sv('pn_'+id,   p.name);
+    sv('ppan_'+id, p.pan);
+    sv('pd_'+id,   p.designation);
+    sv('pdob_'+id, p.dobRaw);
+    sv('pa_'+id,   p.address);
+    sv('ppoa_'+id, p.poa);
+    // Restore Aadhaar last 4 or full ref
+    if (p.poa === 'AADHAR') {
+      sv('ppoaN_'+id, p.poaNum.replace('XXXX XXXX ', ''));
+    } else {
+      sv('ppoaN_'+id, p.poaNum);
+    }
     sv('pnat_'+id, p.nationality);
+    sv('psh_'+id,  p.share);
+    onPoaChange(id); // apply correct UI state
     if (p.isAS) { const cb = document.getElementById('pas_'+id); if (cb) { cb.checked = true; markAS(id); } }
   }, 0);
   refreshLabels();
 }
+
 function renderPartnerRow(id) {
   const div = document.createElement('div');
   div.className = 'prow'; div.id = 'pr_'+id;
@@ -535,38 +663,56 @@ function renderPartnerRow(id) {
       </label>
       <button class="rm-btn" onclick="removePartner(${id})" style="display:none">✕ Remove</button>
     </div>
-    <div class="g2">
-      <div class="f"><label>Full Name <span class="r">*</span></label>
-        <input type="text" id="pn_${id}" placeholder="Full name as in PAN" oninput="autoSave()"/></div>
+
+    <div class="p-section">🪪 PAN Card Details</div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="f"><label>Full Name as on PAN <span class="r">*</span></label>
+        <input type="text" id="pn_${id}" placeholder="Exactly as on PAN card" oninput="autoSave()"/></div>
+      <div class="f"><label>PAN Number <span class="r">*</span></label>
+        <input type="text" id="ppan_${id}" placeholder="ABCDE1234F" maxlength="10"
+          style="text-transform:uppercase"
+          oninput="this.value=this.value.toUpperCase();autoSave()"/></div>
       <div class="f"><label>Designation <span class="r">*</span></label>
         <input type="text" id="pd_${id}" value="Partner" oninput="autoSave()"/></div>
-      <div class="f"><label>Date of Birth <span class="r">*</span></label>
+      <div class="f"><label>Date of Birth (as on PAN) <span class="r">*</span></label>
         <input type="date" id="pdob_${id}" onchange="autoSave()"/></div>
-      <div class="f"><label>% Ownership / Share <span class="r">*</span></label>
-        <input type="number" id="psh_${id}" placeholder="e.g. 33.3" step="0.01" min="0" max="100" oninput="autoSave()"/>
-        <span class="hint">Must match Partnership Deed</span></div>
+    </div>
+
+    <div class="p-section">📋 Aadhaar / Address Details</div>
+    <div class="g2" style="margin-bottom:12px">
       <div class="f s2"><label>Residential Address &amp; PIN Code <span class="r">*</span></label>
-        <input type="text" id="pa_${id}" placeholder="Full address with PIN code" oninput="autoSave()"/></div>
-      <div class="f"><label>PAN Number <span class="r">*</span></label>
-        <input type="text" id="ppan_${id}" placeholder="ABCDE1234F" maxlength="10" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase();autoSave()"/></div>
+        <input type="text" id="pa_${id}" placeholder="Full address as on Aadhaar with PIN code" oninput="autoSave()"/></div>
       <div class="f"><label>Proof of Address Type <span class="r">*</span></label>
-        <select id="ppoa_${id}" onchange="autoSave()">
+        <select id="ppoa_${id}" onchange="onPoaChange(${id})">
           <option value="">— Select —</option>
-          <option value="AADHAR">Aadhaar (Redacted)</option>
+          <option value="AADHAR">Aadhaar</option>
           <option value="VOTER ID">Voter ID</option>
           <option value="DRIVING LICENSE">Driving License</option>
           <option value="PASSPORT">Passport</option>
         </select></div>
-      <div class="f"><label>Address Proof Ref. No. <span class="r">*</span></label>
-        <input type="text" id="ppoaN_${id}" placeholder="e.g. XXXX XXXX 1234" oninput="autoSave()"/></div>
+      <div class="f"><label>Address Proof Number <span class="r">*</span></label>
+        <div class="aadhar-wrap" id="poaWrap_${id}">
+          <span class="aadhar-prefix" id="poaPre_${id}" style="display:none">XXXX XXXX</span>
+          <input type="text" class="aadhar-input" id="ppoaN_${id}"
+            placeholder="Reference number"
+            oninput="autoSave()"/>
+        </div></div>
       <div class="f"><label>Nationality <span class="r">*</span></label>
         <select id="pnat_${id}" onchange="autoSave()">
           <option value="Indian">Indian</option>
           <option value="Foreign National">Foreign National</option>
         </select></div>
+    </div>
+
+    <div class="p-section">📑 Partnership Deed Details</div>
+    <div class="g2">
+      <div class="f"><label>% Ownership / Share <span class="r">*</span></label>
+        <input type="number" id="psh_${id}" placeholder="e.g. 33.3" step="0.01" min="0" max="100" oninput="autoSave()"/>
+        <span class="hint">From the Partnership Deed — must total 100% across all partners</span></div>
     </div>`;
   document.getElementById('pContainer').appendChild(div);
 }
+
 function markAS(id) {
   document.querySelectorAll('.prow').forEach(r => r.style.borderColor = '');
   const row = document.getElementById('pr_'+id);
@@ -593,12 +739,18 @@ function getASId() {
 function collectPartners() {
   const asId = getASId();
   return partnerIds.map(id => ({
-    _id: id, name: gv('pn_'+id), designation: gv('pd_'+id) || 'Partner',
-    dobRaw: gv('pdob_'+id), dob: fmtDOB(gv('pdob_'+id)),
-    share: gv('psh_'+id), address: gv('pa_'+id),
-    pan: gv('ppan_'+id).toUpperCase(), poa: gv('ppoa_'+id),
-    poaNum: gv('ppoaN_'+id), nationality: gv('pnat_'+id) || 'Indian',
-    isAS: id === asId,
+    _id: id,
+    name:        gv('pn_'+id),
+    pan:         gv('ppan_'+id).toUpperCase(),
+    designation: gv('pd_'+id) || 'Partner',
+    dobRaw:      gv('pdob_'+id),
+    dob:         fmtDOB(gv('pdob_'+id)),
+    address:     gv('pa_'+id),
+    poa:         gv('ppoa_'+id),
+    poaNum:      getPoaNum(id),
+    nationality: gv('pnat_'+id) || 'Indian',
+    share:       gv('psh_'+id),
+    isAS:        id === asId,
   }));
 }
 
@@ -615,10 +767,10 @@ function renderPP() {
     <label style="display:flex;align-items:center;gap:10px;padding:9px 0;font-size:14px;cursor:pointer;border-bottom:1px solid var(--bdr)">
       <input type="checkbox" class="pp-chk" value="${p._id}"
         style="width:18px;height:18px;accent-color:var(--pe);cursor:pointer"
-        ${saved.includes(p._id) ? 'checked' : ''} onchange="autoSave()">
+        ${saved.includes(p._id)?'checked':''} onchange="autoSave()">
       <span>${p.name||'(unnamed)'}</span>
       <span style="color:var(--muted);font-size:12px">${p.share||'?'}%</span>
-      ${p.isAS ? '<span style="font-size:11px;background:#e8f5e9;color:var(--green);border:1px solid #a5d6a7;padding:1px 8px;border-radius:12px;font-weight:700">AS</span>' : ''}
+      ${p.isAS?'<span style="font-size:11px;background:#e8f5e9;color:var(--green);border:1px solid #a5d6a7;padding:1px 8px;border-radius:12px;font-weight:700">AS</span>':''}
     </label>`).join('');
 }
 function getPresentIds() {
@@ -642,6 +794,10 @@ function validate(n) {
   clrErr(); const errs = [];
   if (n===0) {
     if (!needRes() && !needBO()) errs.push('Select at least one document to generate');
+    if (!gv('agentName'))  { errs.push('Your agent name is required'); mkErr('agentName'); }
+    if (!gv('agentPhone')) { errs.push('Your phone number is required'); mkErr('agentPhone'); }
+    if (!gv('cmName'))     { errs.push('CM name is required'); mkErr('cmName'); }
+    if (!gv('agentState')) { errs.push('State is required'); mkErr('agentState'); }
   }
   if (n===1) {
     if (!gv('firmName'))   { errs.push('Firm name required'); mkErr('firmName'); }
@@ -657,15 +813,17 @@ function validate(n) {
     if (pd.length < 2) errs.push('At least 2 partners required');
     if (!getASId()) errs.push('Tick "Authorised Signatory" next to one partner');
     pd.forEach((p,i) => {
-      if (!p.name)   { errs.push(`Partner ${i+1}: Name required`); mkErr('pn_'+p._id); }
-      if (!p.dobRaw) { errs.push(`Partner ${i+1}: DOB required`); mkErr('pdob_'+p._id); }
-      if (!p.share)  { errs.push(`Partner ${i+1}: % share required`); mkErr('psh_'+p._id); }
-      else tot += parseFloat(p.share);
-      if (!p.address){ errs.push(`Partner ${i+1}: Address required`); mkErr('pa_'+p._id); }
-      if (!p.pan)    { errs.push(`Partner ${i+1}: PAN required`); mkErr('ppan_'+p._id); }
+      if (!p.name)    { errs.push(`Partner ${i+1}: Name required`); mkErr('pn_'+p._id); }
+      if (!p.pan)     { errs.push(`Partner ${i+1}: PAN required`); mkErr('ppan_'+p._id); }
       else if (!/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(p.pan)) { errs.push(`Partner ${i+1}: Invalid PAN (e.g. ABCDE1234F)`); mkErr('ppan_'+p._id); }
-      if (!p.poa)    { errs.push(`Partner ${i+1}: Address proof type required`); mkErr('ppoa_'+p._id); }
-      if (!p.poaNum) { errs.push(`Partner ${i+1}: Address proof number required`); mkErr('ppoaN_'+p._id); }
+      if (!p.dobRaw)  { errs.push(`Partner ${i+1}: DOB required`); mkErr('pdob_'+p._id); }
+      if (!p.address) { errs.push(`Partner ${i+1}: Address required`); mkErr('pa_'+p._id); }
+      if (!p.poa)     { errs.push(`Partner ${i+1}: Address proof type required`); mkErr('ppoa_'+p._id); }
+      if (!gv('ppoaN_'+p._id)) { errs.push(`Partner ${i+1}: Address proof number required`); mkErr('ppoaN_'+p._id); }
+      else if (p.poa === 'AADHAR' && !/^[0-9]{4}$/.test(gv('ppoaN_'+p._id)))
+        { errs.push(`Partner ${i+1}: Enter exactly 4 digits for Aadhaar`); mkErr('ppoaN_'+p._id); }
+      if (!p.share)   { errs.push(`Partner ${i+1}: % share required`); mkErr('psh_'+p._id); }
+      else tot += parseFloat(p.share);
     });
     if (Math.abs(tot-100) > 0.6) errs.push(`Total ownership ${tot.toFixed(1)}% — must equal 100%`);
   }
@@ -681,7 +839,7 @@ function validate(n) {
     }
   }
   if (n===4 && needBO()) {
-    if (!gv('boDate'))   { errs.push('BO declaration date required'); mkErr('boDate'); }
+    if (!gv('boDate')) { errs.push('BO declaration date required'); mkErr('boDate'); }
     if (needRes() && gv('resDate') && gv('boDate') && gv('resDate')!==gv('boDate'))
       errs.push(`BO date must match resolution date (${fmtDate(gv('resDate'))})`);
   }
@@ -694,7 +852,6 @@ function renderReview() {
   const as=pd.find(p=>p.isAS);
   const pSame=document.querySelector('input[name=pSame]:checked')?.value;
   const boCat=document.querySelector('input[name=boCat]:checked')?.value;
-
   document.getElementById('reviewBody').innerHTML = `
     <table class="rtbl">
       <tr><td>Documents</td><td><strong>${[needRes()&&'Partner Resolution',needBO()&&'BO Declaration'].filter(Boolean).join(' + ')}</strong></td></tr>
@@ -702,13 +859,13 @@ function renderReview() {
       <tr><td>Registered Address</td><td>${gv('regAddress')}</td></tr>
       <tr><td>Principal Office</td><td>${pSame==='same'?'Same as Registered':gv('principalAddr')}</td></tr>
       <tr><td>Entity Type</td><td>${gv('entityType')==='registered'?'Registered Partnership / LLP':'Unregistered Partnership Firm'}</td></tr>
-      <tr><td>Letterhead</td><td>${gv('lhName')?'✅ Embedded in document':'⬜ Not added'}</td></tr>
+      <tr><td>Letterhead</td><td>${gv('lhName')?'✅ Embedded':'⬜ Not added'}</td></tr>
       <tr><td>Authorised Signatory</td><td>${as?as.name:'—'}</td></tr>
       ${needRes()?`<tr><td>Resolution Date &amp; Time</td><td>${fmtDate(gv('resDate'))} at ${fmtTime(gv('resTime'))}</td></tr><tr><td>Partners Present</td><td>${pp.map(p=>p.name).join(', ')||'—'}</td></tr>`:''}
       ${needBO()?`<tr><td>BO Date</td><td>${fmtDate(gv('boDate'))}</td></tr><tr><td>Deed Date</td><td>${fmtDate(gv('deedDate'))}</td></tr><tr><td>BO Category</td><td>${boCat==='cat1'?'Category 1':'Category 2'}</td></tr>`:''}
       <tr><td>Partners</td><td>${pd.map(p=>`${p.name} — ${p.share}%${p.isAS?' (AS)':''}`).join('<br>')||'—'}</td></tr>
+      <tr><td>Agent</td><td>${gv('agentName')} · ${gv('agentPhone')} · ${gv('cmName')} · ${gv('agentState')}</td></tr>
     </table>`;
-
   const btns = document.getElementById('docBtns');
   btns.innerHTML = '';
   if (needRes()) {
@@ -723,7 +880,7 @@ function renderReview() {
   }
 }
 
-// ══ GENERATE — mobile-safe download ════
+// ══ GENERATE ═══════════════════════════
 async function generate(type) {
   const btnId = type==='resolution' ? 'btnR' : 'btnBO';
   const btn = document.getElementById(btnId);
@@ -755,6 +912,9 @@ async function generate(type) {
     },
   };
 
+  // Fire Google Sheets log silently
+  logToSheets(type);
+
   try {
     const res = await fetch(`/api/generate/${type}`, {
       method: 'POST',
@@ -762,33 +922,23 @@ async function generate(type) {
       body: JSON.stringify(payload)
     });
     if (!res.ok) { const e=await res.json().catch(()=>({error:'Server error'})); throw new Error(e.error||`HTTP ${res.status}`); }
-
     const blob = await res.blob();
     const fn = gv('firmName').replace(/[^a-zA-Z0-9]/g,'_') +
-               (type==='resolution' ? '_Partner_Resolution.docx' : '_BO_Declaration.docx');
-
-    // ── Mobile-safe download ──
+               (type==='resolution'?'_Partner_Resolution.docx':'_BO_Declaration.docx');
     if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-      // IE/Edge legacy
       window.navigator.msSaveOrOpenBlob(blob, fn);
     } else {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
-      a.style.display = 'none';
-      a.href = url;
-      a.download = fn;
-      // iOS Safari needs the link in the DOM and a real tap event
-      document.body.appendChild(a);
-      a.click();
-      // Give browser time to start download before revoking
-      setTimeout(() => { URL.revokeObjectURL(url); document.body.removeChild(a); }, 2000);
+      a.style.display='none'; a.href=url; a.download=fn;
+      document.body.appendChild(a); a.click();
+      setTimeout(()=>{ URL.revokeObjectURL(url); document.body.removeChild(a); }, 2000);
     }
-
     toast('✅ Download started!', 'ok');
   } catch(e) { console.error(e); toast('Error: '+e.message, 'er'); }
 
-  btn.disabled = false;
-  btn.innerHTML = type==='resolution' ? '📄 Download Partner Resolution' : '📋 Download BO Declaration';
+  btn.disabled=false;
+  btn.innerHTML=type==='resolution'?'📄 Download Partner Resolution':'📋 Download BO Declaration';
 }
 
 // ══ FORMAT HELPERS ══════════════════════
