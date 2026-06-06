@@ -219,6 +219,7 @@ header p{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
           <div class="f s2">
             <label>Registered Office Address <span class="r">*</span></label>
             <textarea id="regAddress" placeholder="e.g. Shop No. 2, Karve Layout, Bengaluru, Karnataka – 400019" oninput="autoSave()"></textarea>
+            <span class="hint">📄 Get this from the <strong>Partnership Deed</strong> — copy the address exactly as written there</span>
           </div>
           <div class="f">
             <label>Type of Entity <span class="r">*</span></label>
@@ -227,14 +228,16 @@ header p{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
               <option value="registered">Partnership Firm / LLP (Registered)</option>
               <option value="unregistered">Unregistered Partnership Firm</option>
             </select>
+            <span class="hint">📄 Check the <strong>Partnership Deed</strong> — if "LLP" is mentioned anywhere in the deed or firm name, select Registered. If not, select Unregistered.</span>
           </div>
           <div class="f">
             <label>Principal Place of Operation/Office <span class="r">*</span></label>
+            <span class="hint" style="margin-bottom:6px;display:block">🏪 Get this from the <strong>GST certificate</strong> — it is the address where the business actually operates. If the same as above, select "Same". If different, select "Different" and enter the address.</span>
             <div class="rg" style="margin-bottom:6px">
-              <label><input type="radio" name="pSame" value="same" checked onchange="togglePA(this);autoSave()"> Same as Registered Address</label>
-              <label><input type="radio" name="pSame" value="diff" onchange="togglePA(this);autoSave()"> Different Address</label>
+              <label><input type="radio" name="pSame" value="same" checked onchange="togglePA(this);autoSave()"> ✅ Same as Registered Address</label>
+              <label><input type="radio" name="pSame" value="diff" onchange="togglePA(this);autoSave()"> 📝 Different Address</label>
             </div>
-            <input type="text" id="principalAddr" placeholder="Different principal address" style="display:none" oninput="autoSave()"/>
+            <input type="text" id="principalAddr" placeholder="Enter principal place of business address as on GST" style="display:none" oninput="autoSave()"/>
           </div>
         </div>
 
@@ -395,6 +398,9 @@ header p{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
       <p style="margin-top:12px;font-size:11px;color:var(--muted)">
         All <u><strong>bold underlined text</strong></u> in the document = your filled-in data.
       </p>
+      <p style="margin-top:14px;font-size:13px;font-weight:700;color:#c0392b;line-height:1.5">
+        ⚠️ IF THE DOWNLOAD BUTTON DOES NOT WORK — CLOSE THIS WINDOW AND OPEN THE LINK AGAIN. YOU WILL NOT LOSE ANY DATA.
+      </p>
     </div>
     <div class="act">
       <button class="btn btn-s" onclick="prevP(5)">← Back to Edit</button>
@@ -406,7 +412,7 @@ header p{color:rgba(255,255,255,.7);font-size:12px;margin-top:1px}
 
 <script>
 // ══ STATE ══════════════════════════════
-const LS       = 'pe_merchant_v5';       // merchant data (clears per onboarding)
+const LS       = 'pe_merchant_v6';       // merchant data (clears per onboarding)
 const LS_AGENT = 'pe_agent_permanent';   // agent info (never clears)
 const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxfI5PR7BIxfb17WnYtzR6-S8PASQ8glGZ-D0Eaj0LvXjkbiYgEQ7lMJZEA4TU0t-P3/exec'; // ← paste your Apps Script URL here after setup
 
@@ -707,7 +713,9 @@ function renderPartnerRow(id) {
     <div class="p-section">📑 Partnership Deed Details</div>
     <div class="g2">
       <div class="f"><label>% Ownership / Share <span class="r">*</span></label>
-        <input type="number" id="psh_${id}" placeholder="e.g. 33.3" step="0.01" min="0" max="100" oninput="autoSave()"/>
+        <input type="number" id="psh_${id}" placeholder="e.g. 33.33" step="0.01" min="0" max="100"
+          oninput="autoSave()"
+          onblur="fmtShare(this)"/>
         <span class="hint">From the Partnership Deed — must total 100% across all partners</span></div>
     </div>`;
   document.getElementById('pContainer').appendChild(div);
@@ -852,19 +860,54 @@ function renderReview() {
   const as=pd.find(p=>p.isAS);
   const pSame=document.querySelector('input[name=pSame]:checked')?.value;
   const boCat=document.querySelector('input[name=boCat]:checked')?.value;
+
+  // Build partner detail rows
+  const partnerRows = pd.map((p,i) => `
+    <tr><td colspan="2" style="background:#f4f1fa;font-weight:700;color:var(--pe);padding:8px 10px;font-size:12px;letter-spacing:.5px">
+      PARTNER ${i+1}${p.isAS?' &nbsp;✅ Authorised Signatory':''}
+    </td></tr>
+    <tr><td>Name</td><td>${p.name||'—'}</td></tr>
+    <tr><td>PAN</td><td>${p.pan||'—'}</td></tr>
+    <tr><td>Designation</td><td>${p.designation||'—'}</td></tr>
+    <tr><td>Date of Birth</td><td>${p.dob||'—'}</td></tr>
+    <tr><td>Address</td><td>${p.address||'—'}</td></tr>
+    <tr><td>Proof of Address</td><td>${p.poa||'—'} — ${p.poaNum||'—'}</td></tr>
+    <tr><td>Nationality</td><td>${p.nationality||'—'}</td></tr>
+    <tr><td>% Ownership</td><td>${p.share||'—'}%</td></tr>
+  `).join('');
+
   document.getElementById('reviewBody').innerHTML = `
     <table class="rtbl">
-      <tr><td>Documents</td><td><strong>${[needRes()&&'Partner Resolution',needBO()&&'BO Declaration'].filter(Boolean).join(' + ')}</strong></td></tr>
+      <tr><td colspan="2" style="background:var(--pe);color:#fff;font-weight:700;padding:8px 10px;font-size:12px;letter-spacing:.5px">DOCUMENT &amp; FIRM DETAILS</td></tr>
+      <tr><td>Documents to Generate</td><td><strong>${[needRes()&&'Partner Resolution',needBO()&&'BO Declaration'].filter(Boolean).join(' + ')}</strong></td></tr>
       <tr><td>Firm Name</td><td><strong>${gv('firmName')}</strong></td></tr>
       <tr><td>Registered Address</td><td>${gv('regAddress')}</td></tr>
       <tr><td>Principal Office</td><td>${pSame==='same'?'Same as Registered':gv('principalAddr')}</td></tr>
       <tr><td>Entity Type</td><td>${gv('entityType')==='registered'?'Registered Partnership / LLP':'Unregistered Partnership Firm'}</td></tr>
-      <tr><td>Letterhead</td><td>${gv('lhName')?'✅ Embedded':'⬜ Not added'}</td></tr>
+      <tr><td>Partnership Deed Date</td><td>${fmtDate(gv('deedDate'))}</td></tr>
+      <tr><td>Letterhead</td><td>${gv('lhName')?'✅ Embedded in document':'⬜ Not added'}</td></tr>
+      <tr><td>PEP Declaration</td><td>${document.getElementById('pepChk').checked?'✅ Confirmed':'❌ Not confirmed'}</td></tr>
+      ${needRes()?`
+      <tr><td colspan="2" style="background:var(--pe);color:#fff;font-weight:700;padding:8px 10px;font-size:12px;letter-spacing:.5px">RESOLUTION DETAILS</td></tr>
+      <tr><td>Resolution Date</td><td>${fmtDate(gv('resDate'))}</td></tr>
+      <tr><td>Resolution Time</td><td>${fmtTime(gv('resTime'))}</td></tr>
       <tr><td>Authorised Signatory</td><td>${as?as.name:'—'}</td></tr>
-      ${needRes()?`<tr><td>Resolution Date &amp; Time</td><td>${fmtDate(gv('resDate'))} at ${fmtTime(gv('resTime'))}</td></tr><tr><td>Partners Present</td><td>${pp.map(p=>p.name).join(', ')||'—'}</td></tr>`:''}
-      ${needBO()?`<tr><td>BO Date</td><td>${fmtDate(gv('boDate'))}</td></tr><tr><td>Deed Date</td><td>${fmtDate(gv('deedDate'))}</td></tr><tr><td>BO Category</td><td>${boCat==='cat1'?'Category 1':'Category 2'}</td></tr>`:''}
-      <tr><td>Partners</td><td>${pd.map(p=>`${p.name} — ${p.share}%${p.isAS?' (AS)':''}`).join('<br>')||'—'}</td></tr>
-      <tr><td>Agent</td><td>${gv('agentName')} · ${gv('agentPhone')} · ${gv('cmName')} · ${gv('agentState')}</td></tr>
+      <tr><td>Partners Present</td><td>${pp.map(p=>p.name+(p.isAS?' (AS)':'')).join(', ')||'—'}</td></tr>
+      <tr><td>Combined Share (Present)</td><td>${pp.reduce((s,p)=>s+parseFloat(p.share||0),0).toFixed(2)}%</td></tr>
+      `:''}
+      ${needBO()?`
+      <tr><td colspan="2" style="background:var(--pe);color:#fff;font-weight:700;padding:8px 10px;font-size:12px;letter-spacing:.5px">BO DECLARATION DETAILS</td></tr>
+      <tr><td>BO Declaration Date</td><td>${fmtDate(gv('boDate'))}</td></tr>
+      <tr><td>BO Category</td><td>${boCat==='cat1'?'Category 1 (Partners with >10/15% ownership)':'Category 2 (Senior Managing Official)'}</td></tr>
+      <tr><td>Natural Persons Above Threshold</td><td>${document.querySelector('input[name=natPer]:checked')?.value==='yes'?'Yes':'No'}</td></tr>
+      `:''}
+      <tr><td colspan="2" style="background:var(--pe);color:#fff;font-weight:700;padding:8px 10px;font-size:12px;letter-spacing:.5px">PARTNER DETAILS</td></tr>
+      ${partnerRows}
+      <tr><td colspan="2" style="background:var(--pe);color:#fff;font-weight:700;padding:8px 10px;font-size:12px;letter-spacing:.5px">AGENT DETAILS</td></tr>
+      <tr><td>Agent Name</td><td>${gv('agentName')}</td></tr>
+      <tr><td>Agent Phone</td><td>${gv('agentPhone')}</td></tr>
+      <tr><td>CM Name</td><td>${gv('cmName')}</td></tr>
+      <tr><td>State</td><td>${gv('agentState')}</td></tr>
     </table>`;
   const btns = document.getElementById('docBtns');
   btns.innerHTML = '';
@@ -942,6 +985,10 @@ async function generate(type) {
 }
 
 // ══ FORMAT HELPERS ══════════════════════
+function fmtShare(el) {
+  const v = parseFloat(el.value);
+  if (!isNaN(v)) el.value = v.toFixed(2);
+}
 function fmtDate(d) { if(!d) return ''; const [y,m,day]=d.split('-'); return `${day}-${m}-${y}`; }
 function fmtTime(t) {
   if(!t) return '';
